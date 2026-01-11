@@ -160,10 +160,6 @@ body:has(.elem:hover) .elem {
     scale: 0.90;
 }
 
-.todo-list-fullpage{
-    display: block;
-}
-
 .todo-list-fullpage h2{
     font-size: 40px;
 }
@@ -213,6 +209,7 @@ body:has(.elem:hover) .elem {
 .todo-container .addtask form textarea{
     padding: 10px 20px;
     width: 100%;
+    height: 250px;
     font-size: 20px;
     background-color: var(--pri);
     border-radius: 5px;
@@ -270,6 +267,28 @@ body:has(.elem:hover) .elem {
     color: var(--tri2);
     font-size: 20px;
     font-weight: 500;
+    margin-right:20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.task h5 span{
+    color: var(--pri);
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+    background-color: red;
+    
+
+}
+
+.task h5 span.true{
+    opacity: 1;
+}
+.task h5 span.false{
+    opacity: 0;
 }
 
 .task button{
