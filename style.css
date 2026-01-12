@@ -3,6 +3,7 @@
     --sec: #90AB8B;
     --tri1: #5A7863;
     --tri2: #3B4953;
+    --tri3:rgb(228, 126, 126)
 }
 
 @font-face {
@@ -66,7 +67,7 @@ body {
 
 }
 
-
+/* All section CSS */
 
 section.allElems {
     height: 100%;
@@ -143,6 +144,8 @@ body:has(.elem:hover) .elem {
     padding: 30px;
 }
 
+
+/* Back button */
 .back {
     position: absolute;
     right: 5%;
@@ -160,6 +163,9 @@ body:has(.elem:hover) .elem {
     scale: 0.90;
 }
 
+
+
+/* Todo List Page CSS Begins here  */
 .todo-list-fullpage h2{
     font-size: 40px;
 }
@@ -222,12 +228,12 @@ body:has(.elem:hover) .elem {
     padding: 10px 20px;
     width: 100%;
     font-size: 20px;
-    background-color: var(--tri1);
+    background-color: var(--tri2);
     border-radius: 5px;
     margin: 10px;
     border: none;
     outline: none;
-    color: var(--tri2);
+    color: var(--pri);
     transition: all 0.1s linear;
     font-weight: 700;
 }
@@ -294,13 +300,13 @@ body:has(.elem:hover) .elem {
 .task button{
     padding: 10px 20px;
     font-size: 20px;
-    background-color: var(--tri1);
+    background-color: var(--tri2);
     border-radius: 5px;
     border: none;
     outline: none;
-    color: var(--tri2);
+    color: var(--pri);
     transition: all 0.1s linear;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 .task button:active{
@@ -339,12 +345,6 @@ body:has(.elem:hover) .elem {
 
 /* Daily Planner Page CSS Begins here  */
 
-
-
-.daily-planner-fullpage{
-    display: block;
-}
-
 .daily-planner-fullpage h2{
     font-size: 40px;
 }
@@ -381,8 +381,8 @@ body:has(.elem:hover) .elem {
     border: none;
     outline: none;
     border-radius: 5px;
-    background-color: var(--pri);
-    color: var(--tri2);
+    background-color: var(--tri2);
+    color: var(--pri);
     font-weight: 500;
     padding-top: 20px;
 }
@@ -391,7 +391,7 @@ body:has(.elem:hover) .elem {
     position: absolute;
     top: 5%;
     left: 1%;
-    color: var(--tri2);
+    color: var(--pri);
     font-weight: 700;
     font-size: 16px;
 }
@@ -399,4 +399,111 @@ body:has(.elem:hover) .elem {
 .alltask::-webkit-scrollbar,
 .day-planner::-webkit-scrollbar {
     display: none;
+}
+
+
+/* Motivational Quotes section css begins here */
+
+.Motivational-fullpage {
+    display: block;
+    position: relative;
+}
+
+.motivation-container{
+    height: auto;
+    min-height: 280px;
+    width: 80%;
+    background-color: var(--pri);
+    position: relative;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50px;
+    z-index: 1;
+    
+}
+
+.motivation-container::after{
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color:var(--tri3);
+    border-radius: 50px;
+    scale: 1.15;
+    z-index: -1;
+    filter: blur(100px);
+    
+
+}
+
+
+.motivation-container .motivation-wrapper{
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+    background-color: var(--tri2);
+    border-radius: 40px;
+    border: 2px solid var(--pri);
+    padding: 20px;
+}
+
+
+.motivation1{
+    padding:20px;
+    border-radius: 20px;
+    margin-top: 10px;
+    background-color: var(--tri1);
+    width: fit-content;
+}
+
+.motivation1 h2{
+    font-size: 35px;
+    color: var(--pri);
+    font-weight: 700;
+    width: fit-content;
+    padding: 10px;
+}
+
+.motivation2{
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.motivation2 h1{
+    font-size: 35px;
+    font-weight: 700;
+    color: var(--pri);
+    line-height: 1.4;
+}
+
+
+.author{
+    padding:20px;
+    border-radius: 20px;
+    margin-top: 10px;
+    background-color: var(--tri1);
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+.author h2{
+    font-size: 35px;
+    color: var(--pri);
+    font-weight: 700;
+    width: fit-content;
+    text-align: right;
+    
+}
+
+.motivation-container .motivation-wrapper img{
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    opacity: 0.5;
+    height: 90px;
+
 }
