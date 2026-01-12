@@ -78,3 +78,37 @@ form.addEventListener('submit', function (e) {
 
 }
 todoList()
+
+
+
+// Daily Planner Page JS Begins here
+function dailyPlanner(){
+    
+var dayPlanData=JSON.parse(localStorage.getItem('dayPlanData'))||{}
+
+var dayplanner=document.querySelector('.day-planner')
+var hours=Array.from({length:18},(elem,idx)=>
+    `${6+idx}:00 -${7+idx}:00`
+)
+
+
+var sum=''
+hours.forEach(function(elem,idx){
+    var savedData=dayPlanData[idx]||''
+    sum=sum+`<div class="day-planner-time">
+                    <p>${elem}</p>
+                    <input id="${idx}"type="text" placeholder="..." value="${savedData}">
+                </div>`
+})
+dayplanner.innerHTML=sum
+
+
+var dayPlannerInput=document.querySelectorAll('.day-planner input')
+dayPlannerInput.forEach(function(elem){
+    elem.addEventListener('input',function(){
+        dayPlanData[elem.id]=elem.value
+        localStorage.setItem('dayPlanData',JSON.stringify(dayPlanData))
+    })
+})
+}
+dailyPlanner()
