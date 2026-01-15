@@ -3,7 +3,7 @@
     --sec: #90AB8B;
     --tri1: #5A7863;
     --tri2: #3B4953;
-    --tri3:rgb(228, 126, 126)
+    --tri3:rgb(193, 117, 117);
 }
 
 @font-face {
@@ -405,7 +405,6 @@ body:has(.elem:hover) .elem {
 /* Motivational Quotes section css begins here */
 
 .Motivational-fullpage {
-    display: block;
     position: relative;
 }
 
@@ -413,14 +412,13 @@ body:has(.elem:hover) .elem {
     height: auto;
     min-height: 280px;
     width: 80%;
-    background-color: var(--pri);
+    background-color: var(--sec);
     position: relative;
     top: 40%;
     left: 50%;
     transform: translate(-50%,-50%);
     border-radius: 50px;
     z-index: 1;
-    
 }
 
 .motivation-container::after{
@@ -428,11 +426,11 @@ body:has(.elem:hover) .elem {
     height: 100%;
     width: 100%;
     position: absolute;
-    background-color:var(--tri3);
+    background-color:var(--sec);
     border-radius: 50px;
     scale: 1.15;
     z-index: -1;
-    filter: blur(100px);
+    filter: blur(20px);
     
 
 }
@@ -442,15 +440,15 @@ body:has(.elem:hover) .elem {
     z-index: 10;
     position: absolute;
     width: 100%;
-    background-color: var(--tri2);
+    background-color: var(--sec);
     border-radius: 40px;
-    border: 2px solid var(--pri);
     padding: 20px;
+    border: 3px solid var(--pri);
 }
 
 
 .motivation1{
-    padding:20px;
+    padding:10px;
     border-radius: 20px;
     margin-top: 10px;
     background-color: var(--tri1);
@@ -458,9 +456,9 @@ body:has(.elem:hover) .elem {
 }
 
 .motivation1 h2{
-    font-size: 35px;
+    font-size: 30px;
     color: var(--pri);
-    font-weight: 700;
+    font-weight: 500;
     width: fit-content;
     padding: 10px;
 }
@@ -471,9 +469,9 @@ body:has(.elem:hover) .elem {
 }
 
 .motivation2 h1{
-    font-size: 35px;
+    font-size: 25px;
     font-weight: 700;
-    color: var(--pri);
+    color: var(--tri2);
     line-height: 1.4;
 }
 
@@ -488,12 +486,13 @@ body:has(.elem:hover) .elem {
     align-items: center;
     justify-content: flex-end;
     margin-left: auto;
+    width: fit-content;
 }
 
 .author h2{
-    font-size: 35px;
+    font-size: 30px;
     color: var(--pri);
-    font-weight: 700;
+    font-weight: 500;
     width: fit-content;
     text-align: right;
     
@@ -503,7 +502,86 @@ body:has(.elem:hover) .elem {
     position: absolute;
     right: 3%;
     top: 3%;
-    opacity: 0.5;
-    height: 90px;
+    opacity: 0.3;
+    height: 70px;
 
+}
+
+
+.pomodoro-timer-fullpage{
+    position: relative;
+    display: block;
+}
+
+.pomodoro-timer-fullpage h2{
+    font-size: 40px;
+}
+
+
+.pomodoro-container{
+    position: relative;
+    height: 500px;
+    width: 700px;
+    background-color: var(--sec);
+    border-radius: 10%;
+    box-shadow: 0 0 20px var(--pri);
+    transform: translate(-50%,-50%);
+    top: 47%;
+    left: 50%;
+
+
+}
+.pomodoro-timer-fullpage .pomodoro-container .pomotimer{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+.pomodoro-timer-fullpage .pomodoro-container img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50px;
+    opacity: 0.1;
+}
+
+.pomotimer{
+    font-size: 50px;
+    font-weight: 500;
+    margin-top: 40px;
+}
+.pomotimer button{
+    background-color: var(--pri);
+    padding: 15px 30px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 700;
+    color: var(--tri2);
+    margin: 10px;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px rgb(45, 41, 41);
+    transition: all 0.1s linear;
+}
+.pomotimer button:active{
+    scale: 0.98;
+    box-shadow: 0px 0px 0px black;
+}
+
+.pomodoro-timer-fullpage .session{
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--tri1);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--tri2);
+}
+
+.pomotimer h1{
+    color: var(--tri2);
 }
