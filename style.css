@@ -1,9 +1,9 @@
 :root {
     --pri: #EBF4DD;
     --sec: #90AB8B;
-    --tri1: #5A7863;
+    --tri1: #649272;
     --tri2: #3B4953;
-    --tri3:rgb(193, 117, 117);
+    --tri3:red;
 }
 
 @font-face {
@@ -72,19 +72,91 @@ body {
 section.allElems {
     height: 100%;
     width: 100%;
-    padding: 40px;
+    padding: 20px;
     background-color: var(--tri1);
     position: absolute;
     overflow: auto;
 }
 
+nav{
+    padding: 0 30px;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    background-color: var(--sec);
+    border-radius: 50px;
+    
+    margin-bottom: 20px;
+}
+
+.theme{
+    font-size: 25px;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--tri2);
+    padding: 5px 5px;
+    border-radius: 20px;
+    transition: all 0.1s linear;
+}
+
 
 .allElems header{
-    height: 200px;
+    height: 250px;
     width: 100%;
-    background-color: var(--sec);
-    margin-bottom: 40px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 30px;
     border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    header {
+    transition: background-image 0.6s ease-in-out;
+}
+
+}
+
+header .header1 h1{
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+header .header1 h4{
+    font-size: 30px;
+    font-weight: 500;
+}
+header .header1 h2{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+header .header2 h2{
+    font-size: 50px;
+    font-weight: 700;
+}
+
+header .header2 h4{
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+header .header2 h3{
+    font-size: 20px;
+    font-weight: 500;
+}
+header .header2 h6{
+    font-size: 20px;
+    font-weight: 500;
+}
+header .header2 h5{
+    font-size: 20px;
+    font-weight: 500;
 }
 
 
@@ -300,7 +372,7 @@ body:has(.elem:hover) .elem {
     padding: 3px 8px;
     border-radius: 10px;
     font-weight: 500;
-    background-color: red;
+    background-color: var(--tri3);
     
 
 }

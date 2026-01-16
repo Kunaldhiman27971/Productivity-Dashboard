@@ -141,84 +141,143 @@ motivationQuotes()
 // Elements
 function pomodoroTimer() {
     let timer = document.querySelector('.pomotimer h1')
-let startbtn = document.querySelector('.pomotimer .start-timer')
-let pausebtn = document.querySelector('.pomotimer .pause-timer')
-let resetbtn = document.querySelector('.pomotimer .reset-timer')
-let sessiontext = document.querySelector('.pomodoro-timer-fullpage .session')
+    let startbtn = document.querySelector('.pomotimer .start-timer')
+    let pausebtn = document.querySelector('.pomotimer .pause-timer')
+    let resetbtn = document.querySelector('.pomotimer .reset-timer')
+    let sessiontext = document.querySelector('.pomodoro-timer-fullpage .session')
 
-// Timer state
-let totalSeconds = 1500 // 25 min
-let timerinterval = null
-let isworking = true
-
-
-function updatetimer() {
-    let minutes = Math.floor(totalSeconds / 60)
-    let seconds = totalSeconds % 60
-    timer.innerHTML = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
-}
+    // Timer state
+    let totalSeconds = 1500 // 25 min
+    let timerinterval = null
+    let isworking = true
 
 
-function startTimer() {
-    
-    if (timerinterval !== null) return
+    function updatetimer() {
+        let minutes = Math.floor(totalSeconds / 60)
+        let seconds = totalSeconds % 60
+        timer.innerHTML = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+    }
 
-    timerinterval = setInterval(() => {
-        if (totalSeconds > 0) {
-            totalSeconds--
-            updatetimer()
-        } else {
-            clearInterval(timerinterval)
-            timerinterval = null
 
-            
-            if (isworking) {
-                isworking = false
-                totalSeconds = 300 // 5 min break
-                sessiontext.innerHTML = 'Break Session'
+    function startTimer() {
+
+        if (timerinterval !== null) return
+
+        timerinterval = setInterval(() => {
+            if (totalSeconds > 0) {
+                totalSeconds--
+                updatetimer()
             } else {
-                isworking = true
-                totalSeconds = 1500 // 25 min work
-                sessiontext.innerHTML = 'Work Session'
+                clearInterval(timerinterval)
+                timerinterval = null
+
+
+                if (isworking) {
+                    isworking = false
+                    totalSeconds = 300 // 5 min break
+                    sessiontext.innerHTML = 'Break Session'
+                } else {
+                    isworking = true
+                    totalSeconds = 1500 // 25 min work
+                    sessiontext.innerHTML = 'Work Session'
+                }
+
+                updatetimer()
             }
-
-            updatetimer()
-        }
-    }, 1000)
-}
+        }, 1000)
+    }
 
 
-function pauseTimer() {
-    clearInterval(timerinterval)
-    timerinterval = null
-}
+    function pauseTimer() {
+        clearInterval(timerinterval)
+        timerinterval = null
+    }
 
 
-function resetTimer() {
-    clearInterval(timerinterval)
-    timerinterval = null
-    isworking = true
-    totalSeconds = 1500
-    sessiontext.innerHTML = 'Work Session'
+    function resetTimer() {
+        clearInterval(timerinterval)
+        timerinterval = null
+        isworking = true
+        totalSeconds = 1500
+        sessiontext.innerHTML = 'Work Session'
+        updatetimer()
+    }
+
+
     updatetimer()
-}
 
 
-updatetimer()
-
-
-startbtn.addEventListener('click', startTimer)
-pausebtn.addEventListener('click', pauseTimer)
-resetbtn.addEventListener('click', resetTimer)
+    startbtn.addEventListener('click', startTimer)
+    pausebtn.addEventListener('click', pauseTimer)
+    resetbtn.addEventListener('click', resetTimer)
 
 }
 pomodoroTimer()
 
 
+function weatherchange(){
+var city = "Hamirpur,Himachal Pradesh,India"
 var apiKey = '4ca371f004b541c18c760805261601';
-async function weatherapicall(){
-    var response=await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=Hamirpur,Himachal Pradesh,India`)
-    var data =await response.json();
-    console.log(data)
+
+var data = null
+var time = document.querySelector(".header1 .time")
+var date = document.querySelector(".header1 .date")
+var temp=document.querySelector(".header2 h2")
+var Condition=document.querySelector(".header2 h4")
+var Precipitation=document.querySelector(".header2 .Precipitation")
+var windSpeed=document.querySelector(".header2 .windspeed") 
+var Humidity=document.querySelector(".header2 .Humidity")
+async function weatherapicall() {
+    var response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
+    data = await response.json();
+    temp.innerHTML=`${data.current.temp_c}°C`
+    Condition.innerHTML=`${data.current.condition.text}`
+    Precipitation.innerHTML=`Heat Index: ${data.current.heatindex_c}%`
+    Humidity.innerHTML=`Humidity: ${data.current.humidity} %`
+    windSpeed.innerHTML=`Wind Speed: ${data.current.wind_kph} kph`
 }
 weatherapicall()
+
+function timedate() {
+    var header=document.querySelector(".allElems header")
+    var date = null;
+    const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    const monthnames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    date = new Date();
+
+    var dayofweek = weekday[date.getDay()];
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var seconds = date.getSeconds();
+    var dateofmonth = date.getDate();
+    var month = monthnames[date.getMonth()];
+    var year = date.getFullYear();
+
+    if (hours >= 6 && hours < 16) {
+    header.style.backgroundImage = "url('./day.jpeg')";
+} 
+else if (hours >= 16 && hours < 19) {
+    header.style.backgroundImage = "url('./evening.avif')";
+} 
+else {
+    header.style.backgroundImage = "url('./night.jpg')";
+}
+
+    date.innerHTML = `${dateofmonth} ${month} ${year}`
+    if (hours > 12){
+        if (hours > 12) {
+            time.innerHTML = `${dayofweek}, ${String(hours-12).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')} PM`
+        }
+
+    }
+    else {
+        time.innerHTML = `${dayofweek}, ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')} AM`
+    }
+}
+setInterval(() => {
+    timedate()
+}, 1000)
+
+}
+weatherchange()
+
