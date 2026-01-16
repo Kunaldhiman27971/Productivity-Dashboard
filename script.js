@@ -214,7 +214,7 @@ function pomodoroTimer() {
 }
 pomodoroTimer()
 
-
+// Weather App JS Begins here
 function weatherchange(){
 var city = "Hamirpur,Himachal Pradesh,India"
 var apiKey = '4ca371f004b541c18c760805261601';
@@ -281,3 +281,26 @@ setInterval(() => {
 }
 weatherchange()
 
+
+function changeTheme() {
+const themes = [
+    ['#ECDFCC','#1E201E','#131312','#697565'],
+  ['#EBF4DD','#90AB8B','#649272','#3B4953'],
+  ['#ffffff','#423F3E','#252525','#2B2B2B'],
+  ['#968a6f','#3E6B89','#1C3C50','#D9CAB3'],
+  ['#585857','#8a8b7c','#A1BC98','#778873']
+]
+
+let flag = 0
+document.querySelector('.theme').addEventListener('click', () => {
+  const root = document.documentElement
+  root.style.setProperty('--pri', themes[flag][0])
+  root.style.setProperty('--sec', themes[flag][1])
+  root.style.setProperty('--tri1', themes[flag][2])
+  root.style.setProperty('--tri2', themes[flag][3])
+  flag = (flag + 1) % themes.length
+})
+
+
+}
+changeTheme()

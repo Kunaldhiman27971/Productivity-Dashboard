@@ -1,8 +1,9 @@
+
 :root {
-    --pri: #EBF4DD;
-    --sec: #90AB8B;
-    --tri1: #649272;
-    --tri2: #3B4953;
+    --pri: #ECDFCC;
+    --sec: #1E201E;
+    --tri1: #131312;
+    --tri2: #697565;
     --tri3:red;
 }
 
@@ -32,6 +33,18 @@
     inherits: false;
 }
 
+@-webkit-keyframes borderanimate {
+    from {
+        --rotate: 0deg;
+
+    }
+
+    to {
+        --rotate: 360deg;
+
+    }
+}
+
 @keyframes borderanimate {
     from {
         --rotate: 0deg;
@@ -48,7 +61,8 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     font-family: aeonik;
     color: var(--pri);
 }
@@ -76,32 +90,8 @@ section.allElems {
     background-color: var(--tri1);
     position: absolute;
     overflow: auto;
+    padding-top: 110px;
 }
-
-nav{
-    padding: 0 30px;
-    height: 60px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    
-    background-color: var(--sec);
-    border-radius: 50px;
-    
-    margin-bottom: 20px;
-}
-
-.theme{
-    font-size: 25px;
-    font-weight: 700;
-    cursor: pointer;
-    color: var(--tri2);
-    padding: 5px 5px;
-    border-radius: 20px;
-    transition: all 0.1s linear;
-}
-
 
 .allElems header{
     height: 250px;
@@ -110,11 +100,19 @@ nav{
     background-position: center;
     margin-bottom: 30px;
     border-radius: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     padding: 40px;
     header {
+    -webkit-transition: background-image 0.6s ease-in-out;
+    -o-transition: background-image 0.6s ease-in-out;
     transition: background-image 0.6s ease-in-out;
 }
 
@@ -161,10 +159,15 @@ header .header2 h5{
 
 
 .allElems .allfeatures {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
     gap: 30px;
-    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
 }
 
 .elem {
@@ -175,27 +178,40 @@ header .header2 h5{
     width: 250px;
     overflow: hidden;
     position: relative;
+    background: -webkit-gradient(linear, left top, left bottom, from(black))padding-box, conic-gradient(from var(--rotate), black, black, var(--pri), black) border-box;
+    background: -o-linear-gradient(black)padding-box, conic-gradient(from var(--rotate), black, black, var(--pri), black) border-box;
     background: linear-gradient(black)padding-box, conic-gradient(from var(--rotate), black, black, var(--pri), black) border-box;
     border: 0px solid rgba(255, 255, 255, 0);
-    animation: borderanimate 5s infinite;
-    animation-timing-function: linear;
-    animation-play-state: paused;
+    -webkit-animation: borderanimate 5s infinite;
+            animation: borderanimate 5s infinite;
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear;
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused;
     cursor: pointer;
+    -webkit-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
     transition: all 0.3s linear;
 }
 
 body:has(.elem:hover) .elem {
-    transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+            transform: scale(0.8);
     opacity: 0.5;
 }
 
 .elem:hover {
-    animation-play-state: running;
+    -webkit-animation-play-state: running;
+            animation-play-state: running;
     border-width: 5px;
-    box-shadow: 0 0 20px var(--pri);
+    -webkit-box-shadow: 0 0 20px var(--pri);
+            box-shadow: 0 0 20px var(--pri);
     color: var(--sec);
     text-shadow: 0 0 20px var(--pri);
-    transform: scale(1) !important;
+    -webkit-transform: scale(1) !important;
+        -ms-transform: scale(1) !important;
+            transform: scale(1) !important;
     opacity: 1 !important;
     border-radius: 10px !important;
 }
@@ -203,7 +219,8 @@ body:has(.elem:hover) .elem {
 .elem img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
 
 }
 
@@ -217,7 +234,9 @@ body:has(.elem:hover) .elem {
 
 
 .elem:active {
-    transform: scale(0.98);
+    -webkit-transform: scale(0.98);
+        -ms-transform: scale(0.98);
+            transform: scale(0.98);
 }
 
 .fullElem {
@@ -229,6 +248,7 @@ body:has(.elem:hover) .elem {
     top: 0;
     left: 0;
     padding: 30px;
+    padding-top: 110px;
 }
 
 
@@ -250,20 +270,24 @@ body:has(.elem:hover) .elem {
     scale: 0.90;
 }
 
-
-
 /* Todo List Page CSS Begins here  */
 .todo-list-fullpage h2{
     font-size: 40px;
 }
 
 .todo-list-fullpage .todo-container{
-    height: 80%;
+    height:80%;
     width: 100%;
-    margin-top: 50px;
+    margin-top: 40px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 
 .todo-list-fullpage .todo-container .addtask{
@@ -281,10 +305,17 @@ body:has(.elem:hover) .elem {
 }
 
 .todo-list-fullpage .todo-container .addtask form{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 30px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    padding: 10px 30px;
     padding-right: 50px;
 }
 
@@ -321,6 +352,8 @@ body:has(.elem:hover) .elem {
     border: none;
     outline: none;
     color: var(--pri);
+    -webkit-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
     transition: all 0.1s linear;
     font-weight: 700;
 }
@@ -334,9 +367,16 @@ body:has(.elem:hover) .elem {
     height: 100%;
     background-color:var(--sec);
     border-radius: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
     padding: 30px;
     padding-right: 50px;
     overflow: auto;
@@ -345,9 +385,15 @@ body:has(.elem:hover) .elem {
 
 
 .task{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     width:100%;
     background-color: var(--pri);
     padding: 5px 10px;
@@ -361,8 +407,12 @@ body:has(.elem:hover) .elem {
     font-size: 20px;
     font-weight: 500;
     margin-right:20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
     gap: 15px;
 }
 
@@ -392,6 +442,8 @@ body:has(.elem:hover) .elem {
     border: none;
     outline: none;
     color: var(--pri);
+    -webkit-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
     transition: all 0.1s linear;
     font-weight: 500;
 }
@@ -401,11 +453,16 @@ body:has(.elem:hover) .elem {
 }
 
 .markimp{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
     width: 100%;
-    margin-bottom: 10px;
     padding: 2px 5px;
 }
 
@@ -444,18 +501,32 @@ body:has(.elem:hover) .elem {
     border-radius: 20px;
     padding: 30px;
     overflow: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
 
 }
 
 .daily-planner-fullpage .day-planner .day-planner-time{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
     gap: 10px;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     position: relative;
     width: 49%;
     margin-bottom: 10px;
@@ -503,7 +574,9 @@ body:has(.elem:hover) .elem {
     position: relative;
     top: 40%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
     border-radius: 50px;
     z-index: 1;
 }
@@ -517,7 +590,8 @@ body:has(.elem:hover) .elem {
     border-radius: 50px;
     scale: 1.15;
     z-index: -1;
-    filter: blur(20px);
+    -webkit-filter: blur(20px);
+            filter: blur(20px);
     
 
 }
@@ -539,6 +613,8 @@ body:has(.elem:hover) .elem {
     border-radius: 20px;
     margin-top: 10px;
     background-color: var(--tri1);
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
 }
 
@@ -546,6 +622,8 @@ body:has(.elem:hover) .elem {
     font-size: 30px;
     color: var(--pri);
     font-weight: 500;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
     padding: 10px;
 }
@@ -569,10 +647,18 @@ body:has(.elem:hover) .elem {
     margin-top: 10px;
     background-color: var(--tri1);
     margin-top: 40px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
     margin-left: auto;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
 }
 
@@ -580,6 +666,8 @@ body:has(.elem:hover) .elem {
     font-size: 30px;
     color: var(--pri);
     font-weight: 500;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
     text-align: right;
     
@@ -610,8 +698,11 @@ body:has(.elem:hover) .elem {
     width: 700px;
     background-color: var(--sec);
     border-radius: 10%;
-    box-shadow: 0 0 20px var(--pri);
-    transform: translate(-50%,-50%);
+    -webkit-box-shadow: 0 0 20px var(--pri);
+            box-shadow: 0 0 20px var(--pri);
+    -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
     top: 47%;
     left: 50%;
 
@@ -621,13 +712,16 @@ body:has(.elem:hover) .elem {
     position: absolute;
     top: 45%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
     text-align: center;
 }
 .pomodoro-timer-fullpage .pomodoro-container img{
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     border-radius: 50px;
     opacity: 0.1;
 }
@@ -647,19 +741,25 @@ body:has(.elem:hover) .elem {
     color: var(--tri2);
     margin: 10px;
     cursor: pointer;
-    box-shadow: 3px 3px 3px rgb(45, 41, 41);
+    -webkit-box-shadow: 3px 3px 3px rgb(45, 41, 41);
+            box-shadow: 3px 3px 3px rgb(45, 41, 41);
+    -webkit-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
     transition: all 0.1s linear;
 }
 .pomotimer button:active{
     scale: 0.98;
-    box-shadow: 0px 0px 0px black;
+    -webkit-box-shadow: 0px 0px 0px black;
+            box-shadow: 0px 0px 0px black;
 }
 
 .pomodoro-timer-fullpage .session{
     position: absolute;
     top: 15%;
     left: 50%;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
     background-color: var(--tri1);
     padding: 10px 20px;
     border-radius: 10px;
@@ -670,4 +770,257 @@ body:has(.elem:hover) .elem {
 
 .pomotimer h1{
     color: var(--tri2);
+}
+
+
+
+
+nav {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    height: 70px;
+    z-index: 10000;
+}
+
+
+
+.nav-in{
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    background-color: var(--sec);
+    border-radius: 20px;
+    padding: 15px 20px;
+}
+.nav-in h2{
+    font-size: 30px;
+    font-weight: 700;
+
+}
+.theme{
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--tri2);
+    padding: 10px 10px;
+    border-radius: 20px;
+    -webkit-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+    background-color: var(--pri);
+    -webkit-transition: all ease 0.1s;
+    -o-transition: all ease 0.1s;
+    transition: all ease 0.1s;
+    -webkit-box-shadow: 2px 2px 5px rgb(45, 41, 41);
+            box-shadow: 2px 2px 5px rgb(45, 41, 41);
+}
+
+.theme h4{
+    color: var(--tri2);
+    pointer-events: none;
+}
+.theme:active{
+    scale: 0.95;
+}
+
+
+/* =========================
+   TABLETS (≤1024px)
+========================= */
+@media (max-width: 1024px) {
+
+    header.allElems {
+        height: auto;
+        padding: 30px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    header .header1 h1 {
+        font-size: 40px;
+    }
+
+    header .header2 h2 {
+        font-size: 40px;
+    }
+
+    .allElems .allfeatures {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .elem {
+        width: 220px;
+        height: 280px;
+    }
+
+    .todo-list-fullpage .todo-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .todo-list-fullpage .todo-container .addtask,
+    .todo-list-fullpage .todo-container .alltask {
+        width: 100%;
+        height: auto;
+    }
+
+    .pomodoro-container {
+        width: 600px;
+        height: 450px;
+    }
+}
+
+/* =========================
+   MOBILES (≤768px)
+========================= */
+@media (max-width: 768px) {
+
+    nav {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        height: auto;
+    }
+
+    .nav-in {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-in h2 {
+        font-size: 24px;
+    }
+
+    section.allElems {
+        padding: 15px;
+        padding-top: 140px;
+    }
+
+    header.allElems {
+        padding: 20px;
+    }
+
+    header .header1 h1 {
+        font-size: 32px;
+    }
+
+    header .header1 h4,
+    header .header1 h2 {
+        font-size: 22px;
+    }
+
+    header .header2 h2 {
+        font-size: 32px;
+    }
+
+    header .header2 h4 {
+        font-size: 26px;
+    }
+
+    .elem {
+        width: 100%;
+        height: 240px;
+    }
+
+    body:has(.elem:hover) .elem {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .daily-planner-fullpage .day-planner {
+        flex-direction: column;
+    }
+
+    .daily-planner-fullpage .day-planner .day-planner-time {
+        width: 100%;
+    }
+
+    .motivation-container {
+        width: 95%;
+        border-radius: 30px;
+    }
+
+    .motivation2 h1 {
+        font-size: 20px;
+    }
+
+    .author h2 {
+        font-size: 22px;
+    }
+
+    .pomodoro-container {
+        width: 90%;
+        height: 380px;
+        border-radius: 30px;
+    }
+
+    .pomotimer {
+        font-size: 40px;
+    }
+
+    .pomotimer button {
+        font-size: 18px;
+        padding: 10px 20px;
+    }
+}
+
+/* =========================
+   SMALL MOBILES (≤480px)
+========================= */
+@media (max-width: 480px) {
+
+    .nav-in h2 {
+        font-size: 20px;
+    }
+
+    .theme {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+
+    header .header1 h1 {
+        font-size: 26px;
+    }
+
+    header .header2 h2 {
+        font-size: 28px;
+    }
+
+    .elem h2 {
+        font-size: 22px;
+    }
+
+    .todo-list-fullpage h2,
+    .daily-planner-fullpage h2,
+    .pomodoro-timer-fullpage h2 {
+        font-size: 28px;
+    }
+
+    .task h5 {
+        font-size: 16px;
+    }
+
+    .task button {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+
+    .pomodoro-container {
+        height: 320px;
+    }
+
+    .pomotimer h1 {
+        font-size: 32px;
+    }
 }
