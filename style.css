@@ -73,11 +73,26 @@ section.allElems {
     height: 100%;
     width: 100%;
     padding: 40px;
-    padding-top: 80px;
     background-color: var(--tri1);
-    display: flex;
-    gap: 20px;
     position: absolute;
+    overflow: auto;
+}
+
+
+.allElems header{
+    height: 200px;
+    width: 100%;
+    background-color: var(--sec);
+    margin-bottom: 40px;
+    border-radius: 20px;
+}
+
+
+.allElems .allfeatures {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: nowrap;
 }
 
 .elem {
@@ -510,7 +525,6 @@ body:has(.elem:hover) .elem {
 
 .pomodoro-timer-fullpage{
     position: relative;
-    display: block;
 }
 
 .pomodoro-timer-fullpage h2{

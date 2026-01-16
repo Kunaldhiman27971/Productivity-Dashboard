@@ -139,7 +139,8 @@ motivationQuotes()
 
 // Pompodoro Timer JS Begins here
 // Elements
-let timer = document.querySelector('.pomotimer h1')
+function pomodoroTimer() {
+    let timer = document.querySelector('.pomotimer h1')
 let startbtn = document.querySelector('.pomotimer .start-timer')
 let pausebtn = document.querySelector('.pomotimer .pause-timer')
 let resetbtn = document.querySelector('.pomotimer .reset-timer')
@@ -150,16 +151,16 @@ let totalSeconds = 1500 // 25 min
 let timerinterval = null
 let isworking = true
 
-// Update timer UI
+
 function updatetimer() {
     let minutes = Math.floor(totalSeconds / 60)
     let seconds = totalSeconds % 60
     timer.innerHTML = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
 }
 
-// Start Timer
+
 function startTimer() {
-    // ❌ Prevent multiple intervals
+    
     if (timerinterval !== null) return
 
     timerinterval = setInterval(() => {
@@ -170,7 +171,7 @@ function startTimer() {
             clearInterval(timerinterval)
             timerinterval = null
 
-            // Switch sessions
+            
             if (isworking) {
                 isworking = false
                 totalSeconds = 300 // 5 min break
@@ -186,13 +187,13 @@ function startTimer() {
     }, 1000)
 }
 
-// Pause Timer
+
 function pauseTimer() {
     clearInterval(timerinterval)
     timerinterval = null
 }
 
-// Reset Timer
+
 function resetTimer() {
     clearInterval(timerinterval)
     timerinterval = null
@@ -202,11 +203,22 @@ function resetTimer() {
     updatetimer()
 }
 
-// Initial UI
+
 updatetimer()
 
-// Events
+
 startbtn.addEventListener('click', startTimer)
 pausebtn.addEventListener('click', pauseTimer)
 resetbtn.addEventListener('click', resetTimer)
-// Pompodoro Timer JS Ends here
+
+}
+pomodoroTimer()
+
+
+var apiKey = '4ca371f004b541c18c760805261601';
+async function weatherapicall(){
+    var response=await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=Hamirpur,Himachal Pradesh,India`)
+    var data =await response.json();
+    console.log(data)
+}
+weatherapicall()
