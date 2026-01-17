@@ -304,3 +304,109 @@ document.querySelector('.theme').addEventListener('click', () => {
 
 }
 changeTheme()
+
+
+
+function dailyGoals() {
+
+    const page = document.querySelector('.daily-goals-fullpage')
+    const form = page.querySelector('form')
+    const taskInput = page.querySelector('input[type="text"]')
+    const textareaInput = page.querySelector('textarea')
+    const taskCheckbox = page.querySelector('#check')
+    const allTask = page.querySelector('.alltask')
+
+    const progressText = page.querySelector('.progress-text')
+    const progressPercent = page.querySelector('.progress-percent')
+    const progressFill = page.querySelector('.progress-fill')
+
+    const today = new Date().toDateString()
+
+    let storedDate = localStorage.getItem('dailyGoalsDate')
+    let dailyGoals = JSON.parse(localStorage.getItem('dailyGoals')) || []
+
+    /* ===== AUTO RESET EVERY DAY ===== */
+    if (storedDate !== today) {
+        dailyGoals = []
+        localStorage.setItem('dailyGoalsDate', today)
+        localStorage.setItem('dailyGoals', JSON.stringify(dailyGoals))
+    }
+
+    function updateProgress() {
+        const total = dailyGoals.length
+        const completed = dailyGoals.filter(g => g.completed).length
+        const percent = total === 0 ? 0 : Math.round((completed / total) * 100)
+
+        progressText.innerText = `${completed} / ${total} Completed`
+        progressPercent.innerText = `${percent}%`
+        progressFill.style.width = `${percent}%`
+    }
+
+    function renderGoals() {
+
+        // Pinned goals first
+        dailyGoals.sort((a, b) => b.pinned - a.pinned)
+
+        let sum = ''
+
+        dailyGoals.forEach((goal, idx) => {
+            sum += `
+            <div class="task">
+                <div class="task-left">
+                    <button class="pin-btn ${goal.pinned ? 'pinned' : ''}" data-pin="${idx}">📌</button>
+                    <h5>
+                        ${goal.task}
+                        <span class="${goal.isImportant}">imp</span>
+                    </h5>
+                </div>
+
+                <button data-done="${idx}">
+                    ${goal.completed ? 'Done ✅' : 'Complete'}
+                </button>
+            </div>`
+        })
+
+        allTask.innerHTML = sum
+        localStorage.setItem('dailyGoals', JSON.stringify(dailyGoals))
+
+        // Complete goal
+        allTask.querySelectorAll('[data-done]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                dailyGoals[btn.dataset.done].completed = true
+                renderGoals()
+            })
+        })
+
+        // Pin goal
+        allTask.querySelectorAll('[data-pin]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                dailyGoals[btn.dataset.pin].pinned =
+                    !dailyGoals[btn.dataset.pin].pinned
+                renderGoals()
+            })
+        })
+
+        updateProgress()
+    }
+
+    renderGoals()
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+
+        if (!taskInput.value.trim()) return
+
+        dailyGoals.push({
+            task: taskInput.value,
+            description: textareaInput.value,
+            isImportant: taskCheckbox.checked,
+            completed: false,
+            pinned: false
+        })
+
+        form.reset()
+        renderGoals()
+    })
+}
+
+dailyGoals()
